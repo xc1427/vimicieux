@@ -1,0 +1,11 @@
+# Insert your preferred key mappings here.
+map J nextTab
+map K previousTab
+map <c-e> scrollDown count=2
+map <c-y> scrollUp count=2
+map <c-u> scrollPageUp count=2
+map <c-d> scrollPageDown count=2
+map [x closeTabsOnLeft
+map ]x closeTabsOnRight
+unmap ^
+map <c-6> visitPreviousTab
