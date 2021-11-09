@@ -26,6 +26,5 @@ mru.vim/
 vim-commentary/
 vim-monokai/
 vim-searchindex/
-vim-vinegar/
 ```
 
