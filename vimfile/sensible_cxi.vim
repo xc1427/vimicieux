@@ -166,8 +166,8 @@ vnoremap // y/<C-R>"<CR>
 noremap <Up> gk
 noremap <Down> gj
 
-imap <C-F> <Right>
-imap <C-B> <Left>
+" imap <C-F> <Right>
+" imap <C-B> <Left>
 
 " The 'smartcase' option only applies to search patterns that you type; it does not apply to * or # or gd. With following mappings, if 'smartcase' is on and you press * while on the word 'The', you will only find 'The' (case sensitive), but if you press * while on the word 'the', the search will not be case sensitive.
 nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>
