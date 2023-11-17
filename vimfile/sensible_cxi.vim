@@ -217,24 +217,7 @@ endif
 " Self defined functionality {{{
 " Go to directory of the current file
 command! -bar CurFileDir execute "lcd " expand('%:p:h')
-" autocmd BufEnter * silent! lcd %:p:h
 
 " Copy current file path
 nnoremap <silent> <C-G>p :let @*=expand('%:p') <CR>
-" nnoremap <silent> <C-G>p :let @"=expand('%:p') <CR>
-
-" Search and highlight all words matching current word
-function! s:SearchAndHighlight(bounded)
-  let l:cword = escape(expand('<cword>'), '\')
-  if (a:bounded)
-    let l:search_pattern = '\<'. l:cword .'\>'
-  else
-    let l:search_pattern = l:cword
-  endif
-  call setreg('/', l:search_pattern)
-  call histadd('search', l:search_pattern)
-endfunction
-nnoremap <silent> s :call <SID>SearchAndHighlight(1) <Bar> let &hlsearch=1 <Bar> if exists('g:loaded_indexed_search') <Bar> execute 'ShowSearchIndex' <Bar> endif <CR>
-nnoremap <silent> gs :call <SID>SearchAndHighlight(0) <Bar> let &hlsearch=1 <Bar> if exists('g:loaded_indexed_search') <Bar> execute 'ShowSearchIndex' <Bar> endif <CR>
-nnoremap <silent> <Leader>s :execute "let @/=\"\\\\\<".expand('<cword>')."\\\\\>\"" <Bar>execute "let &hlsearch=1" <Bar>execute "vimgrep /\\\<".expand('<cword>')."\\\>/gj %" <Bar>execute "bel cw" <CR>
 " }}}
