@@ -88,8 +88,3 @@ Plug 'othree/html5.vim'
 " Initialize plugin system
 call plug#end()
 " }}}
-
-" Some useful short command {{{
-nnoremap \fo :set guifont=Monaco\ for\ Powerline:h13
-nnoremap \se :mksession! ~/vimsessions/tmp.sess \|
-" }}}

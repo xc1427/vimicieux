@@ -157,32 +157,18 @@ if executable('ag')
 endif
 " }}}
 
-" Keymap {{{
-" autocmd FileType qf,help noremap <buffer> q <c-w>c
-
-" Search for visual selected text
-vnoremap // y/<C-R>"<CR>
-
+" Keymap improved {{{
 noremap <Up> gk
 noremap <Down> gj
-
-" imap <C-F> <Right>
-" imap <C-B> <Left>
 
 " The 'smartcase' option only applies to search patterns that you type; it does not apply to * or # or gd. With following mappings, if 'smartcase' is on and you press * while on the word 'The', you will only find 'The' (case sensitive), but if you press * while on the word 'the', the search will not be case sensitive.
 nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>
 nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>
 
-" Recover from accidental Ctrl-U or Ctrl-W
+" Recover from accidental CTRL-U or CTRL-W
+" Why? CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so that you can undo CTRL-U after inserting a line break. Same with CTRL-W
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
-
-" self defined text object /
-onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
-onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-" for it to work with visual mode
-xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
-xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 
 " The following makes it possible to use the cursor keys in Insert mode, without breaking
 " the undo sequence and therefore using |.| (redo) will work as expected.
@@ -206,15 +192,25 @@ function! s:Gm()
 endfunction
 nnoremap <silent> gm :call <SID>Gm()<CR>
 
+" }}}
+
+" Added functionality {{{
+
+" Search for visual selected text
+vnoremap // y/<C-R>"<CR>
+
+" self defined text object /
+onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+xnoremap <silent> i/ :<C-U>normal! T/vt/<CR> " for it to work with visual mode
+xnoremap <silent> a/ :<C-U>normal! F/vf/<CR> " for it to work with visual mode
+
 " Use <C-L> to clear the highlighting of :set hlsearch.
 " https://github.com/tpope/vim-sensible/blob/master/plugin/sensible.vim
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
-" }}}
-
-" Self defined functionality {{{
 " Go to directory of the current file
 command! -bar CurFileDir execute "lcd " expand('%:p:h')
 
