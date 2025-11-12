@@ -19,6 +19,7 @@ endif
 
 " Terminal Config {{{
 if $TERM_PROGRAM ==# 'vscode'
+  " Fix issue where opening a file with Vim in VSCode's integrated terminal prepends a 'g' character
   let &t_SI = ''
   let &t_EI = ''
   let &t_SR = ''
