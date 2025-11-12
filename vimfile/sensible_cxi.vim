@@ -36,14 +36,9 @@ if has('unix')
 endif
 " }}}
 
-" Pathogen.vim {{{
-execute pathogen#infect()
+" Syntax and Filetype {{{
 syntax on
 filetype plugin indent on
-" To use Pathogen:
-" mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-" git clone each plugin into ~/.vim/bundle/ directory
 " }}}
 
 " Netrw {{{

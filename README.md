@@ -1,9 +1,9 @@
 # vimicieux
 Personal vim settings.
 
-I used to be a hardcore vimer. Now I switched to IntelliJ IDEA and VSCode. Mostly because vim lacks some important modern IDE features. When I managed to configure it right, I feel overwhelmed. 
+I used to be a hardcore vimer. Now I switched to IntelliJ IDEA and VSCode/Cursor. Mostly because vim lacks some important modern IDE features. When I managed to configure it right, I feel overwhelmed.
 
-For the moment, I occasionally use vim for instant file viewing / editing / scripting. 
+For the moment, I occasionally use vim for instant file viewing / editing / scripting.
 
 ## How To Use
 
@@ -17,14 +17,13 @@ echo "source ~/vimicieux/vimfile/sensible_cxi.vim" >> .vimrc
 
 ## About Plugins and Plugin Manager
 
-Personally I use TPope's Pathogen. It is an non-intrusive tool and easy to use. Here is the quick introduction on [how to config](<https://github.com/tpope/vim-pathogen#installation>). 
+This setup uses Vim 8.0's native package management. Plugins are installed at `~/.vim/pack/default/start/`.
 
-This is the list of plugins I put in `~/.vim/bundle` :
+This is the list of plugins I use:
 
 ```
 mru.vim/
 vim-commentary/
-vim-monokai/
 vim-searchindex/
 vim-sanegx/
 ```
