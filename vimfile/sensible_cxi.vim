@@ -23,11 +23,29 @@ if $TERM_PROGRAM ==# 'vscode'
   let &t_SI = ''
   let &t_EI = ''
   let &t_SR = ''
-elseif has('unix')
-  " Change cursor shape between mode in iTerm2.app
+elseif $TERM_PROGRAM ==# 'ghostty'
+  " Ghostty supports standard ANSI escape sequences for cursor shape
+  let &t_SI = "\x1b[6 q"   " Steady bar in insert mode
+  let &t_EI = "\x1b[2 q"   " Steady block in normal mode
+  let &t_SR = "\x1b[4 q"   " Steady underline in replace mode
+
+  " Avoid escape timeout issues
+  set timeoutlen=1000 ttimeoutlen=0
+  set mouse=r
+elseif $TERM_PROGRAM ==# 'iTerm.app'
+  " Change cursor shape between mode in iTerm2.app (uses iTerm-specific protocol)
   let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
   let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
   let &t_SR = "\<esc>]50;CursorShape=2\x7" " Underline in replace mode
+
+  " Avoid escape timeout issues
+  set timeoutlen=1000 ttimeoutlen=0
+  set mouse=r
+elseif has('unix')
+  " Fallback for other Unix terminals: use standard ANSI sequences
+  let &t_SI = "\x1b[6 q"   " Steady bar in insert mode
+  let &t_EI = "\x1b[2 q"   " Steady block in normal mode
+  let &t_SR = "\x1b[4 q"   " Steady underline in replace mode
 
   " Avoid escape timeout issues
   set timeoutlen=1000 ttimeoutlen=0
